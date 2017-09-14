@@ -1,0 +1,19 @@
+{
+  "name": "reactproject3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jesse Smith",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp-shell": "^0.6.3"
+  }
+}
