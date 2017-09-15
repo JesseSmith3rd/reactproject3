@@ -9,10 +9,13 @@
   "author": "Jesse Smith",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^3.9.0",
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.1",
     "gulp-connect": "^2.2.0",
     "gulp-open": "^1.0.0",
-    "react-bash": "^1.5.3"
+    "react-bash": "^1.5.3",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "gulp-shell": "^0.6.3"
