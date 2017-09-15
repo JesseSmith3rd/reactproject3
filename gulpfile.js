@@ -8,6 +8,7 @@ var browserify = require('browserify'); //bundles js
 var reactify   = require('reactify'); //transforms react JXS to JS
 var source     = require('vinyl-source-stream'); //Use conventional text streams with gulp
 var concat  = require('gulp-concat');  //this concatenates files
+var lint    = require('gulp-eslint'); //lint our js files, including JSX
 
 var config = {
   port: 3000,
@@ -60,11 +61,17 @@ gulp.task('html', function() {
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest(config.paths.dist + '/css'))
 });
+
+gulp.task('lint', function() {
+  return gulp.src(config.paths.js)
+    .pipe(lint({config: 'eslint.config.json'})) //this is a file where we can create our rules
+    .pipe(lint.format());
+});
 //This task will watch a file and everytime we make a change, gulp knows about it and reloads the browser
 gulp.task('watch', function() {
   gulp.watch(config.paths.html, ['html']); //This is a watch for html and as it changes out html is run automatically
-  gulp.watch(config.paths.js, ['js']); //This is a watch for js and as it changes out js is run automatically
+  gulp.watch(config.paths.js, ['js','lint']); //This is a watch for js and as it changes out js is run automatically
 });
 
  //This is the default task. What this is saying is if I go to the commandline and type it will run the html task, and open task.
- gulp.task('default', ['html', 'js','css','open', 'watch'])
+ gulp.task('default', ['html', 'js','css','lint','open', 'watch'])
