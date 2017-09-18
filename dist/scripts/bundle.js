@@ -29115,6 +29115,34 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":30}],158:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var About = React.createClass({displayName: "About",
+    render: function () {
+      return (
+        React.createElement("div", null,
+            React.createElement("h1", null, "About"),
+            React.createElement("p", null,
+              "This application uses the following technologies:",
+              React.createElement("ul", null,
+                React.createElement("li", null, "React"),
+                React.createElement("li", null, "React Router"),
+                React.createElement("li", null, "Flux"),
+                React.createElement("li", null, "Node"),
+                React.createElement("li", null, "Gulp"),
+                React.createElement("li", null, "browserify"),
+                React.createElement("li", null, "Bootstrap")
+              )
+            )
+        )
+      );
+    }
+});
+
+module.exports = About;
+},{"react":157}],159:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -29124,16 +29152,46 @@ var Home = React.createClass({displayName: "Home",
     return (
         React.createElement("div", {className: "jumbotron"},
           React.createElement("h1", null, "Jesse Smith React Demonstration"),
-          React.createElement("p", null, "React, React Router, and Flux for ultra lightning fast, warp nine, engage website.")
+          React.createElement("p", null, "React, React Router, and Flux for ultra lightning fast, warp nine, engage website. to boldly go where no programmer" + ' ' +
+          "has gone long pause, yes wait for it before")
         )
     );
   }
 });
 
 module.exports = Home;
-},{"react":157}],159:[function(require,module,exports){
+},{"react":157}],160:[function(require,module,exports){
+'use strict';
 $ = jQuery = require('jquery');//defining jquery globally because bootstrap expects it to be there.
 var React = require('react');
-var Home = require('./components/homePage.js');
-React.render(React.createElement(Home, null), document.getElementById('app'));
-},{"./components/homePage.js":158,"jquery":1,"react":157}]},{},[159]);
+var Home = require('./components/homePage');
+var About = require('./components/about/aboutPage');
+
+var App = React.createClass({displayName: "App",
+  render: function() {
+    var Child; //This variable will keep track of which child we want to render
+
+    switch(this.props.route) { //This switch statement looks at the properties and route for this app
+      case 'about': Child = About; break;// This is saying if this route is about them render this About.
+      default: Child = Home; //Otherwise this will default to the homepage.
+    }
+    return (
+      React.createElement("div", null,
+          React.createElement(Child, null)
+      )
+    );
+  }
+});
+
+//This render function will do two things. First it will get the route. This is getting the route by taking a peice of the URL. Then call react.render
+//we created an abstraction that sits above the homepage.
+function render() {
+  var route = window.location.hash.substr(1);
+  React.render(React.createElement(App, {route: route}), document.getElementsById('app')); //We call our app and pass in route as a property.
+}
+window.addEventListener('hashchange', render); //When the application renders, we need to watch for hashchange, So we added an EventListener.
+//hashchange is an event that occurs when there's an hashchange in the URL.
+render(); //Then we need to call a render function. Which needs to be defined on line 23.
+
+// React.render(<Home />, document.getElementById('app')); No longer need
+},{"./components/about/aboutPage":158,"./components/homePage":159,"jQuery":1,"react":157}]},{},[160]);
