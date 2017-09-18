@@ -29122,8 +29122,8 @@ var React = require('react');
 var Home = React.createClass({displayName: "Home",
   render: function() {
     return (
-        React.createElement("div", {className: "jumbotron"}, 
-          React.createElement("h1", null, "Jesses Smith Demonstration"), 
+        React.createElement("div", {className: "jumbotron"},
+          React.createElement("h1", null, "Jesse Smith React Demonstration"),
           React.createElement("p", null, "React, React Router, and Flux for ultra lightning fast, warp nine, engage website.")
         )
     );
@@ -29134,6 +29134,6 @@ module.exports = Home;
 },{"react":157}],159:[function(require,module,exports){
 $ = jQuery = require('jquery');//defining jquery globally because bootstrap expects it to be there.
 var React = require('react');
-var Home = require('./components/homePage');
+var Home = require('./components/homePage.js');
 React.render(React.createElement(Home, null), document.getElementById('app'));
-},{"./components/homePage":158,"jquery":1,"react":157}]},{},[159]);
+},{"./components/homePage.js":158,"jquery":1,"react":157}]},{},[159]);
