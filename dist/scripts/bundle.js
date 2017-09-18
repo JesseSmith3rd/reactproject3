@@ -29124,7 +29124,7 @@ var Home = React.createClass({displayName: "Home",
     return (
         React.createElement("div", {className: "jumbotron"}, 
           React.createElement("h1", null, "Jesses Smith Demonstration"), 
-          React.createElement("p", null, "React, React Router, and Flux for ultra lightning fast, warp nine website.")
+          React.createElement("p", null, "React, React Router, and Flux for ultra lightning fast, warp nine, engage website.")
         )
     );
   }

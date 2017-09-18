@@ -7,7 +7,7 @@ var Home = React.createClass({
     return (
         <div className="jumbotron">
           <h1>Jesses Smith Demonstration</h1>
-          <p>React, React Router, and Flux for ultra lightning fast, warp nine website.</p>
+          <p>React, React Router, and Flux for ultra lightning fast, warp nine, engage website.</p>
         </div>
     );
   }
