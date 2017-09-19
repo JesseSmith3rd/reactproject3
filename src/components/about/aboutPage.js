@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var React = require('react');
 
@@ -15,7 +15,7 @@ var About = React.createClass({
                 <li>Flux</li>
                 <li>Node</li>
                 <li>Gulp</li>
-                <li>browserify</li>
+                <li>Browserify</li>
                 <li>Bootstrap</li>
               </ul>
             </p>
