@@ -16,6 +16,7 @@ var config = {
   paths: {
     html: './src/*.html', //This says, go into the source directory and find any match for html
     js:   './src/**/*.js', //this will direct our path to javascript and look into any subdirectories for any js that we can find.
+    images: './src/images/*',
     css: [
       'node_modules/bootstrap/dist/css/bootstrap.min.css',
       'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
@@ -62,6 +63,16 @@ gulp.task('html', function() {
     .pipe(gulp.dest(config.paths.dist + '/css'))
 });
 
+//Migrates images to dist folder. Note that I could even optimize my images here
+gulp.task('images', function() {
+  gulp.src(config.paths.images)
+    .pipe(gulp.dest(config.paths.dist + '/images'))
+    .pipe(connect.reload());
+
+  gulp.src('./src/favicon.ico')
+    .pipe(gulp.dest(config.paths.dist));
+});
+
 gulp.task('lint', function() {
   return gulp.src(config.paths.js)
     .pipe(lint({config: 'eslint.config.json'})) //this is a file where we can create our rules
@@ -74,4 +85,4 @@ gulp.task('watch', function() {
 });
 
  //This is the default task. What this is saying is if I go to the commandline and type it will run the html task, and open task.
- gulp.task('default', ['html', 'js','css','lint','open', 'watch'])
+ gulp.task('default', ['html', 'js','css','images','lint','open', 'watch'])
